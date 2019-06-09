@@ -1,0 +1,48 @@
+{
+  "name": "rn-redux-saga-firebase",
+  "version": "1.0.0",
+  "description": "Saga Firebase middleware for react, react-native.",
+  "main": "src/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/imbudhiraja/rn-redux-saga-firebase.git"
+  },
+  "keywords": [
+    "saga",
+    "firebase",
+    "react",
+    "redux-saga",
+    "react-native",
+    "react",
+    "rn-redux-saga-firebase",
+    "redux-saga-firebase",
+    "react-native-firebase"
+  ],
+  "author": "Manish Budhiraja",
+  "email": "iammanishbudhiraja@gmail.com",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/imbudhiraja/rn-redux-saga-firebase/issues"
+  },
+  "homepage": "https://github.com/imbudhiraja/rn-redux-saga-firebase#readme",
+  "dependencies": {
+    "@babel/core": "^7.4.5",
+    "@babel/runtime": "^7.4.5"
+  },
+  "peerDependencies": {
+    "react-native": "^0.59.9",
+    "react-native-firebase": "^5.4.2",
+    "redux-saga": "^1.0.2"
+  },
+  "devDependencies": {
+    "eslint": "^5.16.0",
+    "eslint-config-imbudhiraja": "^1.0.3",
+    "eslint-config-prettier": "^4.3.0",
+    "husky": "^2.4.0",
+    "jest": "^24.8.0",
+    "lint-staged": "^8.2.0"
+  }
+}
