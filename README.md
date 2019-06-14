@@ -36,4 +36,4 @@ yarn  add  rn-redux-saga-firebase
 
 ##  License
 
-rn-redux-saga-firebase library is distributed under [![License](https://img.shields.io/npm/l/rn-redux-saga-firebase.svg)](https://github.com/imbudhiraja/rn-redux-saga-firebase/license).
+rn-redux-saga-firebase library is distributed under [![License](https://img.shields.io/npm/l/rn-redux-saga-firebase.svg)](https://github.com/imbudhiraja/rn-redux-saga-firebase/blob/master/LICENSE).
