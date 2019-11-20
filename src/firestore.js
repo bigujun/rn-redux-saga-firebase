@@ -1,13 +1,23 @@
-import { buffers, eventChannel } from 'redux-saga';
-import { call, fork } from 'redux-saga/effects';
+import { buffers, eventChannel } from "redux-saga";
+import { call, fork } from "redux-saga/effects";
 
-import { getCollectionRef, getDocumentRef, syncChannel } from './utility';
+import { getCollectionRef, getDocumentRef, syncChannel } from "./utility";
 
-function channel(pathOrRef, type = 'collection', buffer = buffers.none(), snapshotListenOptions) {
-  const ref = type === 'collection' ? getCollectionRef(this, pathOrRef) : getDocumentRef(this, pathOrRef);
+function channel(
+  pathOrRef,
+  type = "collection",
+  buffer = buffers.none(),
+  snapshotListenOptions
+) {
+  const ref =
+    type === "collection"
+      ? getCollectionRef(pathOrRef)
+      : getDocumentRef(pathOrRef);
 
-  const evtChannel = eventChannel((emit) => {
-    const unsubscribe = snapshotListenOptions ? ref.onSnapshot(snapshotListenOptions, emit) : ref.onSnapshot(emit);
+  const evtChannel = eventChannel(emit => {
+    const unsubscribe = snapshotListenOptions
+      ? ref.onSnapshot(snapshotListenOptions, emit)
+      : ref.onSnapshot(emit);
 
     // Returns unsubscribe function
     return unsubscribe;
@@ -23,7 +33,7 @@ function* addDocument(collectionRef, data) {
 }
 
 function* deleteDocument(documentRef) {
-  const doc = getDocumentRef(this, documentRef);
+  const doc = getDocumentRef(documentRef);
 
   return yield call([doc, doc.delete]);
 }
@@ -53,13 +63,25 @@ function* updateDocument(documentRef, ...args) {
 }
 
 function* syncCollection(pathOrRef, options) {
-  const evtChannel = yield call(channel, pathOrRef, 'collection', undefined, options.snapshotListenOptions);
+  const evtChannel = yield call(
+    channel,
+    pathOrRef,
+    "collection",
+    undefined,
+    options.snapshotListenOptions
+  );
 
   yield fork(syncChannel, evtChannel, options);
 }
 
 function* syncDocument(pathOrRef, options) {
-  const evtChannel = yield call(channel, pathOrRef, 'document', undefined, options.snapshotListenOptions);
+  const evtChannel = yield call(
+    channel,
+    pathOrRef,
+    "document",
+    undefined,
+    options.snapshotListenOptions
+  );
 
   yield fork(syncChannel, evtChannel, options);
 }
@@ -73,5 +95,5 @@ export default {
   setDocument,
   syncCollection,
   syncDocument,
-  updateDocument,
+  updateDocument
 };
